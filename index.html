@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Даниэль–Якоби гальваникалық элементі</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light dark;
+--bg:#e9f0f3;--ink:#12242c;--panel:#fff;--line:#b9cbd3;--mute:#4d6671;--zn:#8d9aa3;--cu:#c0703c;--liqL:#d6e3ea;--liqR:#bfdff0;--e:#e6a400;--zi:#5b7fbf;--ci:#1c8fb5;--an:#8a4fb0;--ca:#2f9d6c;--btn:#0f5c70;--btnink:#fff;--needle:#d2392b;--bridge:#f2e6c8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a20;--ink:#e4eef2;--panel:#162730;--line:#33505c;--mute:#9db4bf;--zn:#a9b6bf;--cu:#d98650;--liqL:#1d3340;--liqR:#17445a;--e:#ffc233;--zi:#8fb0ee;--ci:#4cc3e8;--an:#c493e6;--ca:#5fd09b;--btn:#3fb0cc;--btnink:#06161c;--needle:#ff6a5a;--bridge:#3a4a44}}
+:root[data-theme="dark"]{--bg:#0e1a20;--ink:#e4eef2;--panel:#162730;--line:#33505c;--mute:#9db4bf;--zn:#a9b6bf;--cu:#d98650;--liqL:#1d3340;--liqR:#17445a;--e:#ffc233;--zi:#8fb0ee;--ci:#4cc3e8;--an:#c493e6;--ca:#5fd09b;--btn:#3fb0cc;--btnink:#06161c;--needle:#ff6a5a;--bridge:#3a4a44}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "PT Sans",system-ui,sans-serif}
+.credit{background:var(--ink);color:var(--bg);text-align:center;padding:12px 16px;font:700 22px/1.2 "PT Serif",Georgia,serif;letter-spacing:.02em}
+main{max-width:520px;margin:0 auto;padding:16px 14px 28px}
+h1{font:700 22px/1.25 "PT Serif",Georgia,serif;margin:4px 0 4px}
+.sub{margin:0 0 12px;color:var(--mute)}
+svg{display:block;width:100%;height:auto;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+svg text{font-family:"PT Sans",system-ui,sans-serif;fill:var(--ink)}
+.zi{fill:var(--zi)}.ci{fill:var(--ci)}.el{fill:var(--e);stroke:var(--ink);stroke-width:.8}.an{fill:var(--an)}.ca{fill:var(--ca)}
+.zi,.ci,.an,.ca,.cuf{stroke:var(--panel);stroke-width:1}.cuf{fill:var(--cu)}
+.tx{font:700 9px "PT Sans",system-ui,sans-serif;fill:var(--btnink);text-anchor:middle;pointer-events:none}
+.ctl{margin-top:14px;display:grid;gap:12px}
+button{font:700 16px "PT Sans",system-ui,sans-serif;border:0;border-radius:8px;padding:12px 16px;cursor:pointer;background:var(--btn);color:var(--btnink)}
+button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--e);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 10px}
+.row input{grid-column:1/3;width:100%;accent-color:var(--btn)}
+.row b{font-variant-numeric:tabular-nums}
+.btns{display:grid;grid-template-columns:2fr 1fr;gap:10px}
+#status{margin:0;padding:10px 12px;border-left:4px solid var(--e);background:var(--panel);border-radius:0 8px 8px 0}
+.eq{margin-top:14px;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.eq p{margin:0 0 6px}.eq p:last-child{margin:0}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 0;padding:0;list-style:none;color:var(--mute);font-size:14px}
+.leg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px}
+</style>
+</head>
+<body>
+<div class="credit">made by Dias Sempai</div>
+<main>
+<h1>Даниэль–Якоби гальваникалық элементі</h1>
+<p class="sub">Мырыш және мыс электродтары, тұз көпірі мен вольтметр.</p>
+
+<svg viewBox="0 0 360 420" role="img" aria-label="Даниэль–Якоби элементінің сызбасы">
+  <rect x="30" y="215" width="130" height="170" rx="10" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <rect x="200" y="215" width="130" height="170" rx="10" fill="none" stroke="var(--line)" stroke-width="2"/>
+  <rect x="32" y="255" width="126" height="128" rx="8" fill="var(--liqL)"/>
+  <rect x="202" y="255" width="126" height="128" rx="8" fill="var(--liqR)"/>
+  <g id="ionsL"></g><g id="ionsR"></g>
+  <path id="bridge" d="M135 275 V190 H225 V275" fill="none" stroke="var(--line)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M135 275 V190 H225 V275" fill="none" stroke="var(--bridge)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="bions"></g>
+  <text x="180" y="164" text-anchor="middle" font-size="12">Тұз көпірі (KNO₃)</text>
+  <rect x="86" y="130" width="18" height="230" fill="none" stroke="var(--mute)" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect id="zn" x="86" y="130" width="18" height="230" fill="var(--zn)"/>
+  <rect x="258" y="130" width="14" height="230" fill="none" stroke="var(--mute)" stroke-width="1" stroke-dasharray="3 3"/>
+  <rect id="cu" x="258" y="130" width="14" height="230" fill="var(--cu)"/>
+  <path id="wire" d="M95 130 V70 H265 V130" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
+  <rect id="gap" x="91" y="95" width="8" height="12" fill="var(--panel)"/>
+  <circle cx="95" cy="108" r="3.5" fill="var(--ink)"/><circle cx="95" cy="94" r="3.5" fill="var(--ink)"/>
+  <line id="lever" x1="95" y1="108" x2="81" y2="98" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+  <g id="elec"></g>
+  <circle cx="180" cy="70" r="38" fill="var(--panel)" stroke="var(--ink)" stroke-width="3"/>
+  <path d="M158.7 73.1 A26 26 0 0 1 201.3 73.1" fill="none" stroke="var(--line)" stroke-width="3"/>
+  <line id="needle" x1="180" y1="88" x2="180" y2="62" stroke="var(--needle)" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="180" cy="88" r="3" fill="var(--ink)"/>
+  <text x="180" y="104" text-anchor="middle" font-size="12" font-weight="700">V</text>
+  <text id="volt" x="180" y="128" text-anchor="middle" font-size="18" font-weight="700">0,00 В</text>
+  <text x="14" y="160" font-size="13" font-weight="700">Анод (−)</text>
+  <text x="346" y="160" text-anchor="end" font-size="13" font-weight="700">Катод (+)</text>
+  <g id="caps" style="opacity:.35">
+    <text x="6" y="190" font-size="12" font-weight="700">Zn жұқарады</text>
+    <text x="6" y="204" font-size="10">Zn → Zn²⁺ + 2e⁻</text>
+    <text x="354" y="190" text-anchor="end" font-size="12" font-weight="700">Cu қалыңдайды</text>
+    <text x="354" y="204" text-anchor="end" font-size="10">Cu²⁺ + 2e⁻ → Cu</text>
+  </g>
+  <g id="fly"></g>
+  <text x="95" y="405" text-anchor="middle" font-size="14">Zn | ZnSO₄</text>
+  <text x="265" y="405" text-anchor="middle" font-size="14">Cu | CuSO₄</text>
+</svg>
+
+<ul class="leg">
+  <li><i style="background:var(--e)"></i>e⁻</li>
+  <li><i style="background:var(--zi)"></i>Zn²⁺</li>
+  <li><i style="background:var(--ci)"></i>Cu²⁺</li>
+  <li><i style="background:var(--an)"></i>NO₃⁻</li>
+  <li><i style="background:var(--ca)"></i>K⁺</li>
+</ul>
+
+<div class="ctl">
+  <p id="status" aria-live="polite"></p>
+  <div class="btns">
+    <button id="toggle" type="button" aria-pressed="false">Тізбекті жабу</button>
+    <button id="reset" type="button" class="alt">Қайта бастау</button>
+  </div>
+  <div class="row"><label for="sz">Zn²⁺ концентрациясы, моль/л</label><b id="vz">1,00</b>
+    <input id="sz" type="range" min="0.05" max="2" step="0.05" value="1"></div>
+  <div class="row"><label for="sc">Cu²⁺ концентрациясы, моль/л</label><b id="vc">1,00</b>
+    <input id="sc" type="range" min="0.05" max="2" step="0.05" value="1"></div>
+</div>
+
+<div class="eq">
+  <p><b>Анод (тотығу):</b> Zn → Zn²⁺ + 2e⁻</p>
+  <p><b>Катод (тотықсыздану):</b> Cu²⁺ + 2e⁻ → Cu</p>
+  <p><b>Жиынтық:</b> Zn + Cu²⁺ → Zn²⁺ + Cu</p>
+  <p><b>ЭҚК (Нернст):</b> E = 1,10 + 0,0296·lg([Cu²⁺]/[Zn²⁺]) В</p>
+</div>
+</main>
+
+<script>
+const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg";
+const RM=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let closed=false,czn=1,ccu=1,tr=0,se=0,sb=0,t0=performance.now();
+const B={L:[48,142,268,372],R:[218,312,268,372]};
+const f2=v=>v.toFixed(2).replace(".",",");
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function mk(p,label,c,w,tc){const g=document.createElementNS(NS,"g"),r=document.createElementNS(NS,"rect"),t=document.createElementNS(NS,"text");
+  r.setAttribute("x",-w/2);r.setAttribute("y",-7);r.setAttribute("width",w);r.setAttribute("height",14);r.setAttribute("rx",7);r.setAttribute("class",c);
+  t.setAttribute("class","tx");t.setAttribute("y",3.2);t.textContent=label;if(tc)t.style.fill=tc;
+  g.append(r,t);p.appendChild(g);return g}
+const pos=(g,x,y,o)=>{g.setAttribute("transform","translate("+x+" "+y+")");if(o!==undefined)g.style.opacity=o};
+function ions(g,b,c,l){return Array.from({length:14},()=>({el:mk(g,l,c,28),x:b[0]+Math.random()*(b[1]-b[0]),y:b[2]+Math.random()*(b[3]-b[2]),vx:(Math.random()-.5)*30,vy:(Math.random()-.5)*30,b}))}
+const IL=ions($("ionsL"),B.L,"zi","Zn²⁺"),IR=ions($("ionsR"),B.R,"ci","Cu²⁺");
+const wire=$("wire"),bridge=$("bridge"),LW=wire.getTotalLength(),LB=bridge.getTotalLength();
+const el=Array.from({length:10},()=>mk($("elec"),"e⁻","el",18,"#12242c"));
+const an=Array.from({length:4},()=>mk($("bions"),"NO₃⁻","an",24)),ca=Array.from({length:4},()=>mk($("bions"),"K⁺","ca",18));
+const FA=Array.from({length:4},(_,i)=>({g:mk($("fly"),"Zn²⁺","zi",28),ph:i/4})),FC=Array.from({length:4},(_,i)=>({g:mk($("fly"),"Cu²⁺","ci",28),ph:i/4}));
+const E=()=>1.10+0.02955*Math.log10(ccu/czn);
+const flowing=()=>closed&&ccu>0.051&&czn<1.999;
+
+function setClosed(v){
+  closed=v;
+  const l=$("lever");
+  l.setAttribute("x2",v?95:81);l.setAttribute("y2",v?94:98);
+  $("gap").style.display=v?"none":"";
+  const t=$("toggle");t.textContent=v?"Тізбекті ашу":"Тізбекті жабу";t.setAttribute("aria-pressed",v);
+}
+function status(){
+  $("status").textContent=!closed
+    ?"Тізбек ашық: ток жоқ. Вольтметр элементтің ЭҚК-ін көрсетіп тұр."
+    :flowing()
+      ?"Тізбек жабық: электрондар Zn-тен Cu-ге сыммен өтеді, NO₃⁻ анодқа, K⁺ катодқа қарай жүреді."
+      :"Реагенттер таусылды (Cu²⁺ аз немесе Zn²⁺ шекке жетті): ток тоқтады.";
+}
+function walk(a,n,dt){
+  a.forEach((p,i)=>{
+    const on=i<n;p.el.style.display=on?"":"none";
+    if(!on)return;
+    if(!RM){
+      p.vx=clamp(p.vx+(Math.random()-.5)*80*dt,-26,26);p.vy=clamp(p.vy+(Math.random()-.5)*80*dt,-26,26);
+      p.x+=p.vx*dt;p.y+=p.vy*dt;
+      if(p.x<p.b[0]||p.x>p.b[1]){p.vx*=-1;p.x=clamp(p.x,p.b[0],p.b[1])}
+      if(p.y<p.b[2]||p.y>p.b[3]){p.vy*=-1;p.y=clamp(p.y,p.b[2],p.b[3])}
+    }
+    pos(p.el,p.x,p.y);
+  });
+}
+function frame(now){
+  const dt=Math.min((now-t0)/1000,.05);t0=now;
+  const fl=flowing();
+  if(fl){const d=0.06*dt;czn=Math.min(2,czn+d);ccu=Math.max(0.05,ccu-d);tr+=d;
+    if(document.activeElement!==$("sz"))$("sz").value=czn;
+    if(document.activeElement!==$("sc"))$("sc").value=ccu;
+    status();}
+  const e=E(),f=Math.min(tr/1.2,1);
+  $("vz").textContent=f2(czn);$("vc").textContent=f2(ccu);
+  $("volt").textContent=f2(e)+" В";
+  $("needle").setAttribute("transform","rotate("+(-55+110*clamp(e/1.5,0,1))+" 180 88)");
+  const zw=18-12*f,cw=14+16*f;
+  $("zn").setAttribute("x",95-zw/2);$("zn").setAttribute("width",zw);
+  $("cu").setAttribute("x",265-cw/2);$("cu").setAttribute("width",cw);
+  walk(IL,clamp(Math.round(czn*6),1,14),dt);
+  walk(IR,clamp(Math.round(ccu*6),1,14),dt);
+  if(fl){
+    se=(se+55*(e/1.1)*dt)%LW;sb=(sb+38*dt)%LB;
+    el.forEach((c,i)=>{const p=wire.getPointAtLength((se+i*LW/10)%LW);pos(c,p.x,p.y)});
+    an.forEach((c,i)=>{const p=bridge.getPointAtLength(LB-((sb+i*LB/4)%LB));pos(c,p.x,p.y)});
+    ca.forEach((c,i)=>{const p=bridge.getPointAtLength((sb+i*LB/4+LB/8)%LB);pos(c,p.x,p.y)});
+    FA.forEach(o=>{const n=o.ph+dt/1.6;if(n>=1||o.y===undefined)o.y=292+Math.random()*60;o.ph=n%1;
+      pos(o.g,95+zw/2+14+o.ph*34,o.y,o.ph<.15?o.ph/.15:1-(o.ph-.15)/.85)});
+    FC.forEach(o=>{const n=o.ph+dt/1.8;if(n>=1||o.y===undefined)o.y=292+Math.random()*60;o.ph=n%1;
+      const hit=o.ph>.8;pos(o.g,265-cw/2-14-38*(1-o.ph),o.y,hit?1-(o.ph-.8)/.2:1);
+      const r=o.g.firstChild,t=o.g.lastChild,L=hit?"Cu":"Cu²⁺";
+      if(t.textContent!==L){t.textContent=L;r.setAttribute("class",hit?"cuf":"ci")}});
+  }
+  [...el,...an,...ca,...FA.map(o=>o.g),...FC.map(o=>o.g)].forEach(c=>c.style.display=fl?"":"none");
+  $("caps").style.opacity=fl?1:.35;
+  requestAnimationFrame(frame);
+}
+$("toggle").onclick=()=>{setClosed(!closed);status()};
+$("reset").onclick=()=>{czn=ccu=1;tr=0;$("sz").value=1;$("sc").value=1;setClosed(false);status()};
+$("sz").oninput=e=>{czn=+e.target.value;status()};
+$("sc").oninput=e=>{ccu=+e.target.value;status()};
+setClosed(false);status();requestAnimationFrame(frame);
+</script>
+</body>
+</html>
